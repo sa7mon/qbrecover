@@ -17,7 +17,7 @@ public class Main extends Application {
         //primaryStage.show();
 
         Controller c1 = new Controller("C");
-
+        System.out.println("OS: " + c1.getOS());
     }
 
 
