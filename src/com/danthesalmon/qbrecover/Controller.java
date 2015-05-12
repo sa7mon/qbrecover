@@ -4,28 +4,23 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 
 public class Controller {
 
     //------------------------------ VARIABLES -------------------------------
+    private Boolean boolDatExists = null;
+    private Double dblVersionNum = null;
+    private Integer intVersYear = 0;
     private String strDrive = "";
     private String strOS = "";
     private String datLocation = "";
     private String strErrCode = "";
-    private Boolean boolDatExists = null;
-
-    // Product Number, License Number, Version Year, Version Name
-
-    private Double dblVersionNum = null;
     private String strFlavorName = "";
     private String strProdNum = null;
     private String strLicenseNum = "";
-    private Integer intVersYear = 0;
     private String strVersionName = "";
 
     //------------------------------ FUNCTIONS -------------------------------
@@ -89,7 +84,7 @@ public class Controller {
             flavorNameToVersionName(strFlavorName);
 
         } catch (Exception exDefault) {
-            System.out.println(exDefault.toString());
+            strErrCode = "Couldn't parse license file.";
         }
     }
 
@@ -162,7 +157,7 @@ public class Controller {
 
     private static String getValue(String tag, Element element) {
         NodeList nodes = element.getElementsByTagName(tag).item(0).getChildNodes();
-        Node node = (Node) nodes.item(0);
+        Node node = nodes.item(0);
         return node.getNodeValue();
     }
 
