@@ -52,7 +52,7 @@ public class View extends Application{
    }
 		   
 	public static void main(String[] args) {
-		/*
+		
 		
 		// TODO Auto-generated method stub
 		Recovery c1 = new Recovery("C:\\");
@@ -64,7 +64,7 @@ public class View extends Application{
         System.out.println("License Number: " + c1.getLicenseNum());
         System.out.println("Product Number: " + c1.getProductNum());
         
-        */
+        
 		
 		launch(args);
 	}

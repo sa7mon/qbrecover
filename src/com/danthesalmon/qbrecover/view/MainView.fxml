@@ -5,10 +5,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.danthesalmon.qbrecover.controller.Controller">
+<AnchorPane prefHeight="328.0" prefWidth="540.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.danthesalmon.qbrecover.controller.Controller">
   <!-- TODO Add Nodes -->
   <children>
-    <MenuBar layoutX="0.0" layoutY="0.0" prefWidth="800.0">
+    <MenuBar layoutX="0.0" layoutY="0.0" prefWidth="540.0">
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
@@ -27,5 +27,6 @@
         </Menu>
       </menus>
     </MenuBar>
+    <Button id="btnSelectDrive" layoutX="200.0" layoutY="148.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="140.0" text="Select Drive to Search" />
   </children>
 </AnchorPane>
