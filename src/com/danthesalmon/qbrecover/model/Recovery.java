@@ -1,16 +1,18 @@
-package com.danthesalmon.qbrecover;
+package com.danthesalmon.qbrecover.model;
+
+import java.io.File;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.File;
 
-public class Controller {
+public class Recovery {
 
-    //------------------------------ VARIABLES -------------------------------
+	//------------------------------ VARIABLES -------------------------------
     private Boolean boolDatExists = null;
     private Double dblVersionNum = null;
     private Integer intVersYear = 0;
@@ -26,39 +28,22 @@ public class Controller {
     //------------------------------ FUNCTIONS -------------------------------
 
     // Default constructor method
-    public Controller (String drive) {
+    public Recovery (String drive) {
         strDrive = drive;
-        // Detect OS
-        strOS = System.getProperty("os.name");
-
-        // Determine qbregistration.dat location.
-        switch (strOS) {
-            case "Windows XP":
-                datLocation = strDrive + "Documents and Settings\\All Users\\Application Data\\Common Files\\Intuit\\QuickBooks\\qbregistration.dat";
-                break;
-            case "Windows Vista":
-                datLocation = strDrive + "ProgramData\\Common Files\\Intuit\\QuickBooks\\qbregistration.dat";
-                break;
-            case "Windows 7":
-                datLocation = strDrive + "ProgramData\\Common Files\\Intuit\\QuickBooks\\qbregistration.dat";
-                break;
-            case "windows 8":
-                datLocation = strDrive + "ProgramData\\Common Files\\Intuit\\QuickBooks\\qbregistration.dat";
-                break;
-            case "Windows 8.1":
-                datLocation = strDrive + ":\\ProgramData\\Common Files\\Intuit\\QuickBooks\\qbregistration.dat";
-                break;
-            default:
-                // TODO Show user the error message somehow
-                System.out.println("Couldn't detect system OS");
-        }
 
         // See if registration file exists.
-        File datFile = new File(datLocation);
-        boolDatExists = datFile.exists();
+        File xpFile = new File(strDrive + "Documents and Settings\\All Users\\Application Data\\Common Files\\Intuit\\QuickBooks\\qbregistration.dat");
+        File vista7File = new File (strDrive + "ProgramData\\Common Files\\Intuit\\QuickBooks\\qbregistration.dat");
 
-        // If the dat file exists, parse it and get what we need.
-        parseDat (datFile);
+        if (xpFile.exists()) {
+            parseDat(xpFile);
+        } else if (vista7File.exists()) {
+            parseDat(vista7File);
+        } else {
+            strErrCode = "Couldn't find data file.";
+            //DEBUG
+            System.out.println(strErrCode);
+        }
     }
 
     public void parseDat (File dat) {
@@ -163,13 +148,9 @@ public class Controller {
 
 
     //--------------------------- GETTERS & SETTERS ----------------------------
-    public String getOS() {
-        return this.strOS;
-    }
+    public String getOS() { return this.strOS; }
 
-    public String getDatLocation () {
-        return this.datLocation;
-    }
+    public String getDatLocation () { return this.datLocation; }
 
     public String getDrive() {
         return this.strDrive;
@@ -202,4 +183,6 @@ public class Controller {
     public Integer getVersionYear () {
         return this.intVersYear;
     }
+
+
 }
