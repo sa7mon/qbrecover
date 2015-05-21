@@ -17,7 +17,6 @@ public class Recovery {
     private Double dblVersionNum = null;
     private Integer intVersYear = 0;
     private String strDrive = "";
-    private String strOS = "";
     private String datLocation = "";
     private String strErrCode = "";
     private String strFlavorName = "";
@@ -36,10 +35,13 @@ public class Recovery {
         File vista7File = new File (strDrive + "ProgramData\\Common Files\\Intuit\\QuickBooks\\qbregistration.dat");
 
         if (xpFile.exists()) {
+        	boolDatExists = true;
             parseDat(xpFile);
         } else if (vista7File.exists()) {
+        	boolDatExists = true;
             parseDat(vista7File);
         } else {
+        	boolDatExists = false;
             strErrCode = "Couldn't find data file.";
             //DEBUG
             System.out.println(strErrCode);
@@ -148,7 +150,6 @@ public class Recovery {
 
 
     //--------------------------- GETTERS & SETTERS ----------------------------
-    public String getOS() { return this.strOS; }
 
     public String getDatLocation () { return this.datLocation; }
 

@@ -5,6 +5,7 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -17,6 +18,8 @@ public class View extends Application{
 	private Stage primaryStage;
 	// Must match the pane type in the .fxml
     private AnchorPane rootLayout;
+    
+    private Button btnSelectDrive;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -52,23 +55,9 @@ public class View extends Application{
    }
 		   
 	public static void main(String[] args) {
-		
-		
-		// TODO Auto-generated method stub
-		Recovery c1 = new Recovery("C:\\");
-
-        //System.out.println("Dat file exists: " + c1.getDatFileExists());
-        //System.out.println("OS: " + c1.getOS());
-        System.out.println("Version Name: " + c1.getVersionName());
-        System.out.println("Version Year: " + c1.getVersionYear());
-        System.out.println("License Number: " + c1.getLicenseNum());
-        System.out.println("Product Number: " + c1.getProductNum());
-        
-        
-		
 		launch(args);
+		
+		
 	}
-
-	
 
 }
