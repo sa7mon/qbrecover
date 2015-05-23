@@ -10,6 +10,7 @@ import com.danthesalmon.qbrecover.model.Recovery;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
 
@@ -37,8 +38,16 @@ public class Controller {
     private TextField txtProdNum;
 	
 	@FXML
+	private MenuItem btnClose;
+	
+	@FXML
 	private void initialize () {
 		
+	}
+	
+	@FXML
+	private void click_btnClose () {
+		System.exit(0);
 	}
 	
 	@FXML
@@ -46,7 +55,6 @@ public class Controller {
 		// Function fired on btnSelectDrive click.
 		
 		DirectoryChooser dc = new DirectoryChooser(); 
-
         dc.setTitle("Choose drive");
 
         //Show open file dialog
@@ -54,8 +62,6 @@ public class Controller {
         File file = dc.showDialog(null);
 
        if(file!=null){
-            //System.out.println("File: " + file.getPath());
-            
             do_recover(file.getPath().substring(0, 1));
        }
 		

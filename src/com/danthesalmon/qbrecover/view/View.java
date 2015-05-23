@@ -21,8 +21,6 @@ public class View extends Application{
 	// Must match the pane type in the .fxml
     private AnchorPane rootLayout;
     
-    
-   
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -59,8 +57,6 @@ public class View extends Application{
 		   
 	public static void main(String[] args) {
 		launch(args);
-		
-		
 	}
 
 }
