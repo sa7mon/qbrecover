@@ -15,11 +15,14 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import java.io.File;
+import java.io.FileFilter;
 
 public class Controller {
 	
@@ -53,10 +56,14 @@ public class Controller {
 	@FXML
 	private void click_btnSave () {
 		// Save the license info to file.
-		FileChooser saveChooser = new FileChooser();
-		saveChooser.setTitle("qbrecover - Save License Info");
-		File file = saveChooser.showSaveDialog(View.primaryStage);
 		
+		FileChooser saveChooser = new FileChooser();
+		FileChooser.ExtensionFilter saveFilter = new FileChooser.ExtensionFilter("Text File", "*.txt");
+		
+		saveChooser.setTitle("qbrecover - Save License Info");
+		saveChooser.getExtensionFilters().add(saveFilter);
+		
+		File file = saveChooser.showSaveDialog(View.primaryStage);
 	}
 	
 	@FXML
