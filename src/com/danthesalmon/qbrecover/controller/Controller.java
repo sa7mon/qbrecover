@@ -6,6 +6,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import com.danthesalmon.qbrecover.model.Recovery;
+import com.danthesalmon.qbrecover.view.*;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -41,7 +43,19 @@ public class Controller {
 	private MenuItem btnClose;
 	
 	@FXML
+	private MenuItem btnSave;
+	
+	@FXML
 	private void initialize () {
+		
+	}
+	
+	@FXML
+	private void click_btnSave () {
+		// Save the license info to file.
+		FileChooser saveChooser = new FileChooser();
+		saveChooser.setTitle("qbrecover - Save License Info");
+		File file = saveChooser.showSaveDialog(View.primaryStage);
 		
 	}
 	

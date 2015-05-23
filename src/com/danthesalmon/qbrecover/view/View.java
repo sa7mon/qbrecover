@@ -17,7 +17,7 @@ import com.danthesalmon.qbrecover.model.Recovery;
 public class View extends Application{
 	
 	//-------------------- GUI Elements ----------------------
-	private Stage primaryStage;
+	public static Stage primaryStage;
 	// Must match the pane type in the .fxml
     private AnchorPane rootLayout;
     
