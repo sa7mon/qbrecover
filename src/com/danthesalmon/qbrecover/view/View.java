@@ -6,6 +6,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -14,12 +16,13 @@ import com.danthesalmon.qbrecover.model.Recovery;
 
 public class View extends Application{
 	
-	//------------ VARIABLES ----------------
+	//-------------------- GUI Elements ----------------------
 	private Stage primaryStage;
 	// Must match the pane type in the .fxml
     private AnchorPane rootLayout;
     
-    private Button btnSelectDrive;
+    
+   
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
