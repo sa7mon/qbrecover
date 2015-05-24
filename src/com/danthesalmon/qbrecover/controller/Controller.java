@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Popup;
 
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.xml.parsers.DocumentBuilder;
@@ -23,6 +24,8 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 public class Controller {
 	
@@ -48,10 +51,14 @@ public class Controller {
 	@FXML
 	private MenuItem btnSave;
 	
+	final Popup popupSuccess = new Popup();
+	
 	@FXML
 	private void initialize () {
 		
 	}
+	
+	private Recovery c1;
 	
 	@FXML
 	private void click_btnSave () {
@@ -64,6 +71,23 @@ public class Controller {
 		saveChooser.getExtensionFilters().add(saveFilter);
 		
 		File file = saveChooser.showSaveDialog(View.primaryStage);
+		
+		if (file != null) {
+            try {
+                // Try to save the text file.
+            	PrintWriter out = new PrintWriter(file.getAbsolutePath());
+            	out.println("Recovered QuickBooks License - qbrecover");
+            	out.println();
+            	out.println("Version Name:   " + c1.getVersionName());
+            	out.println("Version Year:   " + c1.getVersionYear().toString());
+            	out.println("License Number: " + c1.getLicenseNum());
+            	out.println("Product Number: " + c1.getProductNum());            	
+            	out.close();
+            } 
+            catch (Exception ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
 	}
 	
 	@FXML
@@ -90,7 +114,7 @@ public class Controller {
 	
 	private void do_recover(String driveLetter) {
 		
-		Recovery c1 = new Recovery(driveLetter + ":\\");
+		c1 = new Recovery(driveLetter + ":\\");
 
         System.out.println("Dat file exists: " + c1.getDatFileExists());
         System.out.println("Version Name: " + c1.getVersionName());
