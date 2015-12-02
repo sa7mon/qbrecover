@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -25,6 +26,7 @@ public class View extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		this.primaryStage = primaryStage;
+		this.primaryStage.getIcons().add(new Image("/com/danthesalmon/qbrecover/view/qbrecover-logo.png"));
 	    this.primaryStage.setTitle("qbrecover - Recover QuickBooks License");
 	    initRootLayout();
 		
