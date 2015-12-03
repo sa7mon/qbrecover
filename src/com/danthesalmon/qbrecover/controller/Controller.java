@@ -9,14 +9,19 @@ import com.danthesalmon.qbrecover.model.Recovery;
 import com.danthesalmon.qbrecover.view.*;
 
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Modality;
 import javafx.stage.Popup;
+import javafx.stage.Stage;
 
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.xml.parsers.DocumentBuilder;
@@ -38,6 +43,9 @@ public class Controller {
 	
 	@FXML
     private Label lblVersionYear;
+	
+	@FXML
+	private Label lblStatus;
 	
 	@FXML
     private TextField txtLicenseNum;
@@ -83,6 +91,19 @@ public class Controller {
             	out.println("License Number: " + c1.getLicenseNum());
             	out.println("Product Number: " + c1.getProductNum());            	
             	out.close();
+            	
+            	// Change status label to success
+            	lblStatus.setText("Information saved to file successfully!");
+            	
+            	// Show success popup
+//            	final Stage dialog = new Stage();
+//                dialog.initModality(Modality.APPLICATION_MODAL);
+//                dialog.initOwner(View.primaryStage);
+//                VBox dialogVbox = new VBox(20);
+//                dialogVbox.getChildren().add(new Text("This is a Dialog"));
+//                Scene dialogScene = new Scene(dialogVbox, 300, 200);
+//                dialog.setScene(dialogScene);
+//                dialog.show();
             } 
             catch (Exception ex) {
                 System.out.println(ex.getMessage());
@@ -115,17 +136,23 @@ public class Controller {
 	private void do_recover(String driveLetter) {
 		
 		c1 = new Recovery(driveLetter + ":\\");
-
-        System.out.println("Dat file exists: " + c1.getDatFileExists());
-        System.out.println("Version Name: " + c1.getVersionName());
-        System.out.println("Version Year: " + c1.getVersionYear());
-        System.out.println("License Number: " + c1.getLicenseNum());
-        System.out.println("Product Number: " + c1.getProductNum());
-        
-        lblVersionName.setText(c1.getVersionName());
-        lblVersionYear.setText(c1.getVersionYear().toString());
-        txtLicenseNum.setText(c1.getLicenseNum());
-        txtProdNum.setText(c1.getProductNum());
+		String recoverError = c1.getErrorCode();
+		if (!(recoverError == "")) {
+			// There was an error
+		} else {
+			System.out.println("Dat file exists: " + c1.getDatFileExists());
+	        System.out.println("Version Name: " + c1.getVersionName());
+	        System.out.println("Version Year: " + c1.getVersionYear());
+	        System.out.println("License Number: " + c1.getLicenseNum());
+	        System.out.println("Product Number: " + c1.getProductNum());
+	        
+	        lblVersionName.setText(c1.getVersionName());
+	        lblVersionYear.setText(c1.getVersionYear().toString());
+	        txtLicenseNum.setText(c1.getLicenseNum());
+	        txtProdNum.setText(c1.getProductNum());
+	        
+	        // Change status to success
+	        lblStatus.setText("QuickBooks information recovered successfully");
+		}
 	}
-
 }

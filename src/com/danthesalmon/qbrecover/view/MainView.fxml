@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="328.0" prefWidth="540.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.danthesalmon.qbrecover.controller.Controller">
+<AnchorPane prefHeight="273.0" prefWidth="540.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danthesalmon.qbrecover.controller.Controller">
   <!-- TODO Add Nodes -->
   <children>
     <MenuBar layoutX="0.0" layoutY="0.0" prefWidth="540.0">
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
-            <MenuItem mnemonicParsing="false" onAction="#click_btnSave" text="Save" fx:id="btnSave" />
+            <MenuItem fx:id="btnSave" mnemonicParsing="false" onAction="#click_btnSave" text="Save" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" onAction="#click_btnClose" text="Close" fx:id="btnClose" />
+            <MenuItem fx:id="btnClose" mnemonicParsing="false" onAction="#click_btnClose" text="Close" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Help">
@@ -24,18 +25,23 @@
         </Menu>
       </menus>
     </MenuBar>
-    <Button fx:id="btnSelectDrive" layoutX="200.0" layoutY="48.0" mnemonicParsing="false" onAction="#click_btnSelectDrive" prefHeight="33.0" prefWidth="140.0" text="Select Drive to Search" />
-    <Pane layoutX="0.0" layoutY="105.0" prefHeight="223.0" prefWidth="540.0" style="-fx-background-color: #F2F2F2;&#10;&#10;&#10;">
+    <Button fx:id="btnSelectDrive" layoutX="200.0" layoutY="38.0" mnemonicParsing="false" onAction="#click_btnSelectDrive" prefHeight="33.0" prefWidth="140.0" text="Select Drive to Search" />
+    <Pane layoutY="90.0" prefHeight="149.0" prefWidth="540.0" style="-fx-background-color: #F2F2F2;&#10;&#10;&#10;">
       <children>
-        <Label layoutX="94.0" layoutY="53.0" text="Version Name:" />
-        <Label fx:id="lblVersionName" layoutX="199.0" layoutY="53.0" text="" />
-        <Label layoutX="103.0" layoutY="85.0" text="Version Year:" />
-        <Label fx:id="lblVersionYear" layoutX="199.0" layoutY="85.0" text="" />
-        <Label layoutX="83.0" layoutY="115.0" text="License Number:" />
-        <TextField fx:id="txtLicenseNum" editable="false" layoutX="199.0" layoutY="115.0" prefWidth="200.0" />
-        <Label layoutX="83.0" layoutY="144.0" text="Product Number" />
-        <TextField fx:id="txtProdNum" editable="false" layoutX="199.0" layoutY="144.0" prefWidth="200.0" />
+        <Label layoutX="93.0" layoutY="26.0" text="Version Name:" />
+        <Label fx:id="lblVersionName" layoutX="199.0" layoutY="26.0" prefHeight="17.0" prefWidth="200.0" text="" />
+        <Label layoutX="97.0" layoutY="49.0" text="Version Year:" />
+        <Label fx:id="lblVersionYear" layoutX="199.0" layoutY="49.0" prefHeight="17.0" prefWidth="200.0" text="" />
+        <Label layoutX="83.0" layoutY="79.0" text="License Number:" />
+        <TextField fx:id="txtLicenseNum" editable="false" layoutX="199.0" layoutY="75.0" prefWidth="200.0" />
+        <Label layoutX="83.0" layoutY="108.0" text="Product Number" />
+        <TextField fx:id="txtProdNum" editable="false" layoutX="199.0" layoutY="108.0" prefWidth="200.0" />
       </children>
     </Pane>
+      <Label fx:id="lblStatus" layoutX="3.0" layoutY="250.0" prefHeight="20.0" prefWidth="524.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
   </children>
 </AnchorPane>

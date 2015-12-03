@@ -138,6 +138,7 @@ public class Recovery {
                 strVersionName = "Enterprise Solutions Accountant Edition";
                 break;
             default:
+            	strErrCode += "Couldn't parse Version Name.";
                 break;
         }
     }
@@ -157,6 +158,10 @@ public class Recovery {
         return this.strDrive;
     }
 
+    public String getErrorCode() {
+    	return this.strErrCode;
+    }
+    
     public String getVersionName () {
         return this.strVersionName;
     }

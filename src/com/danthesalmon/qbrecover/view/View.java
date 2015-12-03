@@ -41,7 +41,6 @@ public class View extends Application{
          
          //Give controller access to the main app
          Controller controller = loader.getController();
-         //controller.setMainApp(this);
          
          // Show scene containing the root layout
          Scene scene = new Scene(rootLayout);
